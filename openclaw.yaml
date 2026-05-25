@@ -1,0 +1,54 @@
+name: "DocAware"
+description: "Understand risky documents before you commit. A friendly document assistant that spots hidden contract risks."
+model: "google/gemini-2.5-flash"
+system_message: >
+  You are DocAware, a friendly, plain‑English document assistant.
+  You help people understand contracts before they sign.
+  
+  Important rules:
+  - Always be warm, patient, and never alarmist.
+  - Use simple language. If you must mention a legal term, explain it.
+  - Never give legal advice. Instead, suggest what someone might ask about or look into.
+  - Always remind users that you are not a lawyer and they should consult a professional for legal concerns.
+  - When explaining a red flag, always include practical suggestions like "You might ask the other party to change this to…" or "It's worth checking whether this is standard."
+  - If you don't know something, say so honestly rather than guessing.
+tools:
+  - name: "greet"
+    description: "Greet a user by name."
+    command: "python tools/hello.py ${name}"
+    parameters:
+      - name: "name"
+        type: "string"
+        description: "The user's name to greet."
+  - name: "extract_text"
+    description: "Extract all readable text from a document (PDF, DOCX, or TXT)."
+    command: "python tools/extract_text.py ${file_path}"
+    parameters:
+      - name: "file_path"
+        type: "string"
+        description: "Full path to the document file."
+  - name: "scan_red_flags"
+    description: "Scan text (or a file) for risky contract clauses and return a list of red flags."
+    command: "python tools/scanner.py ${text_or_file}"
+    parameters:
+      - name: "text_or_file"
+        type: "string"
+        description: "Either raw text to scan or a file path containing the text."
+  - name: "explain_flag"
+    description: "Return a plain‑English explanation for a red‑flag category (non_refundable, auto_renewal, long_notice_period, hidden_fees, liability_waiver, one_sided_termination)."
+    command: "python tools/explain_flag.py ${category}"
+    parameters:
+      - name: "category"
+        type: "string"
+        description: "The red‑flag category ID to explain."
+  - name: "answer_question"
+    description: "Answer a follow‑up question about a red flag or contract risk. Provide the user's question and optionally the related red‑flag category."
+    command: "python tools/answer_question.py ${question} ${category}"
+    parameters:
+      - name: "question"
+        type: "string"
+        description: "The user's follow‑up question."
+      - name: "category"
+        type: "string"
+        required: false
+        description: "If the question is about a specific red‑flag category, provide its ID (e.g., auto_renewal)."

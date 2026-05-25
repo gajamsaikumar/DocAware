@@ -1,0 +1,11 @@
+streamlit
+requests
+python-dotenv
+PyMuPDF
+pdfplumber
+python-docx
+pytesseract
+sentence-transformers
+scikit-learn
+numpy
+torch

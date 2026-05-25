@@ -1,0 +1,3 @@
+This is a simple agreement. The deposit is non-refundable.
+The contract will auto-renew every year unless you give 60 days written notice.
+An administrative fee of £50 applies to all changes.

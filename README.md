@@ -195,7 +195,9 @@ to provide contextual answers.
 
 # System Architecture
 
-![DocAware Architecture](docsarchitecture.png)
+<p align="center">
+  <img src="docs/architecture.png" alt="DocAware Architecture" width="500">
+</p>
 
 # Project Structure
 

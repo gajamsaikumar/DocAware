@@ -196,7 +196,7 @@ to provide contextual answers.
 # System Architecture
 
 <p align="center">
-  <img src="docs/architecture.png" alt="DocAware Architecture" width="500">
+  <img src="docsarchitecture.png" alt="DocAware Architecture" width="500">
 </p>
 
 # Project Structure

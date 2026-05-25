@@ -138,7 +138,7 @@ header_html = """
         <div class="brand-logo">🦞</div>
         <div>
             <div class="brand-title">DocAware</div>
-            <div class="brand-subtitle">AI-powered contract risk intelligence</div>
+            <div class="brand-subtitle">AI-powered document intelligence</div>
         </div>
     </div>
 </div>

@@ -195,27 +195,7 @@ to provide contextual answers.
 
 # System Architecture
 
-```text
-User
- ↓
-Streamlit UI
- ↓
-DocumentProcessor
- ↓
-OpenClaw Scan (Primary)
- ↓
-Fallback Risk Analysis
-   ├── Semantic Detection
-   └── Regex Detection
- ↓
-Risk Scoring Engine
- ↓
-Mistral AI Explanations
- ↓
-Interactive Document Q&A
-```
-
----
+![DocAware Architecture](docsarchitecture.png)
 
 # Project Structure
 

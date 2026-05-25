@@ -1,11 +1,14 @@
 import re
-from tools.scanner import calculate_risk_score
-from tools.semantic_scanner import scan_semantic
+from tools.scanner import RiskScorer
+from tools.semantic_scanner import SemanticScanner
 
 
 class RiskAnalyzer:
     """Detects risky clauses and calculates document risk scores."""
     def __init__(self):
+        self.semantic_scanner = SemanticScanner()
+        self.risk_scorer = RiskScorer()
+
         self.red_flags = [
             ("non_refundable", r"(non[-\s]?refundable|no refund)", "Non-refundable payment"),
             ("auto_renewal", r"(auto[-\s]?renewal|automatic\s+renewal|automatically\s+renew)", "Auto Renewal"),
@@ -63,8 +66,7 @@ class RiskAnalyzer:
 
     def score(self, flags):
         """Calculate overall document risk score."""
-        return calculate_risk_score(flags)
-    
+        return self.risk_scorer.calculate_score(flags)
 
 
     def get_severity(self, flag):
@@ -118,7 +120,7 @@ class RiskAnalyzer:
     def semantic_scan(self, clean_text, clean_page_texts):
         """Run semantic risk detection using embedding similarity."""
         try:
-            sem_flags = scan_semantic(clean_text, threshold=0.5)
+            sem_flags = self.semantic_scanner.scan(clean_text, threshold=0.5)
         except Exception:
             return []
 

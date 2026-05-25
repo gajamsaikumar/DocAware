@@ -1,7 +1,7 @@
 import re
 import os
 import pytesseract
-from tools.extract_text import extract_text_with_pages
+from tools.extract_text import TextExtractor
 
 class DocumentProcessor:
     """Handles document text extraction, cleaning, and preprocessing."""
@@ -10,6 +10,7 @@ class DocumentProcessor:
         tesseract_path = os.getenv("TESSERACT_PATH")
         if tesseract_path:
             pytesseract.pytesseract.tesseract_cmd = tesseract_path
+        self.extractor = TextExtractor()
 
     def clean_pages(self, page_texts):
         """Clean extracted page text by removing formatting noise and normalising whitespace."""
@@ -25,7 +26,7 @@ class DocumentProcessor:
     def process_document(self, file_path):
         """Extract, clean, and combine document text for downstream analysis."""
 
-        page_texts = extract_text_with_pages(str(file_path))
+        page_texts = self.extractor.extract_text_with_pages(str(file_path))
         clean_page_texts = self.clean_pages(page_texts)
         clean_text = "\n".join([t for _, t in clean_page_texts])
 

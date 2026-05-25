@@ -254,66 +254,75 @@ docaware/
 
 ---
 
-# Installation (Local Setup)
+# Installation & Running the Project
 
-## Clone repository
+## Prerequisites
+
+Before running DocAware, ensure you have:
+
+- Python 3.10+
+- OpenClaw installed locally
+- A Mistral API key
+- Tesseract OCR (optional, for scanned PDF support)
+
+## Setup
+
+Clone the repository:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/gajamsaikumar/DocAware.git
 cd docaware
 ```
 
----
+Create and activate a virtual environment:
 
-## Create virtual environment
-
-Windows:
-
+**Windows**
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-Mac/Linux:
-
+**Mac / Linux**
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
----
-
-## Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Configure environment variables
-
-Create:
-
-```text
-.env
-```
-
-Add:
+Create a `.env` file in the project root:
 
 ```env
 MISTRAL_API_KEY=your_api_key_here
 ```
 
----
+Optional (Windows OCR support):
 
-## Run application
-
-```bash
-streamlit run app.py
+```env
+TESSERACT_PATH=C:\Program Files\Tesseract-OCR\tesseract.exe
 ```
 
-Then open:
+## Running the Application
+
+Start OpenClaw in one terminal:
+
+```bash
+openclaw gateway --force
+```
+
+Run DocAware in a second terminal:
+
+```bash
+python -m streamlit run app.py
+```
+
+---
+
+Open the application:
 
 ```text
 http://localhost:8501

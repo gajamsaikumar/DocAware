@@ -36,13 +36,13 @@ class AIAssistant:
             "- Respond ONLY in plain text.\n"
             "- NEVER return HTML.\n"
             "- Never give legal advice.\n"
-            "- Answer questions only if they relate to the uploaded document or its clauses.\n"
-            "- You may explain, summarise, or infer based on the uploaded document content.\n"
+            "- Answer questions about the uploaded document, including explaining clauses, risks, fees, obligations, and possible implications.\n"
+            "- You may infer reasonable conclusions from the uploaded document content.\n"
             "- Do NOT answer unrelated general knowledge questions.\n"
-            "- If a question is unrelated to the uploaded document, reply exactly: "
-            "'I can only answer questions related to the uploaded document.'\n\n"
+            "- If the user's question is completely unrelated to the uploaded document, reply exactly: "
+            "'I can only answer questions about the uploaded document.'\n\n"
             f"{memory_context}"
-            "Relevant document text:\n{snippet}\n\n"
+            f"Relevant document text:\n{snippet}\n\n"
             f"User question: {user_message}"
         )
 

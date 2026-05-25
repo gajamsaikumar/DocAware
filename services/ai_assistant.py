@@ -31,13 +31,17 @@ class AIAssistant:
         snippet = document_text[:6000]
 
         prompt = (
-            "You are DocAware, a friendly document analysis assistant.\n\n"
+            "You are DocAware, a document analysis assistant.\n\n"
             "IMPORTANT RULES:\n"
             "- Respond ONLY in plain text.\n"
             "- NEVER return HTML.\n"
-            "- Never give legal advice.\n\n"
+            "- Never give legal advice.\n"
+            "- ONLY answer using information from the uploaded document.\n"
+            "- Do NOT use outside knowledge.\n"
+            "- If the answer is not clearly found in the document, reply exactly: "
+            "'I can only answer questions based on the uploaded document.'\n\n"
             f"{memory_context}"
-            f"Relevant document text:\n{snippet}\n\n"
+            "Relevant document text:\n{snippet}\n\n"
             f"User question: {user_message}"
         )
 

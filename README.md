@@ -1,4 +1,4 @@
-# 🦞 DocAware
+#🦞 DocAware
 
 **AI-powered document risk analysis assistant built for the DataVita OpenClaw Challenge.**
 
